@@ -2,54 +2,53 @@ var wins = 0;
 var loses = 0;
 var guessLeft = 9;
 var guessSoFar = [];
-var compChoice = ["a","c","d","e","f",];
+var compChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var compGuess = '';
 // var userGuess = []; //
 
 //win or lose get letter
-function computerSelectRandLetter(){
-    compGuess = 
-    compChoice[Math.floor(Math.random() * compChoice.length)];
+function computerSelectRandLetter() {
+    compGuess = compChoice[Math.floor(Math.random() * compChoice.length)];
 
 
 
 }
 // function to update HTML
-function updateScores(){
+function updateScores() {
     document.querySelector("#wins").innerHTML = wins;
     document.querySelector("#loses").innerHTML = loses;
     document.querySelector("#guessleft").innerHTML = guessLeft;
-    document.querySelector("#currentguess").innerHTML = guessSoFar;
+    document.querySelector("#guessSoFar").innerHTML = guessSoFar;
 
 
 }
 // function to reset scores
-function resetScores(){
+function resetScores() {
     guessLeft = 9;
-    guessSoFar = [];    
+    guessSoFar = [];
 }
 
 //runs the game
 computerSelectRandLetter()
-console.log(compGuess)
+console.log(compGuess);
 
 //logic for game what happens when key is pressed
-document.onkeyup = function(event){
-guessLeft--; 
-var userguess = event.key.toLocaleLowerCase();
-guessSoFar.push(userguess);
-updateScores();
+document.onkeyup = function (event) {
+    guessLeft--;
+    var userGuess = event.key.toLowerCase();
+    guessSoFar.push(userGuess);
+    updateScores();
 
-if (userGuess === compGuess){
-    wins ++;
-    updateScores();
-    resetScores();
-    computerSelectRandLetter();
-}
-if (guessLeft === 0 ){
-    loses++
-    updateScores();
-    resetScores();
-    computerSelectRandLetter();
-}
+    if (userGuess === compGuess) {
+        wins++;
+        updateScores();
+        resetScores();
+        computerSelectRandLetter();
+    }
+    if (guessLeft === 0) {
+        loses++;
+        updateScores();
+        resetScores();
+        computerSelectRandLetter();
+    }
 }
