@@ -1,5 +1,5 @@
 var wins = 0;
-var loses = 0;
+var Losses = 0;
 var guessLeft = 9;
 var guessSoFar = [];
 var compChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -16,7 +16,7 @@ function computerSelectRandLetter() {
 // function to update HTML
 function updateScores() {
     document.querySelector("#wins").innerHTML = wins;
-    document.querySelector("#loses").innerHTML = loses;
+    document.querySelector("#Losses").innerHTML = Losses;
     document.querySelector("#guessleft").innerHTML = guessLeft;
     document.querySelector("#guessSoFar").innerHTML = guessSoFar;
 
@@ -46,7 +46,7 @@ document.onkeyup = function (event) {
         computerSelectRandLetter();
     }
     if (guessLeft === 0) {
-        loses++;
+        Losses++;
         updateScores();
         resetScores();
         computerSelectRandLetter();
